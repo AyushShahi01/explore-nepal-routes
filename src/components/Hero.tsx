@@ -51,19 +51,19 @@ const Hero = () => {
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white animate-fade-in">
             Discover the
-            <span className="block text-white/90">Magic of Nepal</span>
+            <span className="block bg-gradient-to-r from-[hsl(45,93%,47%)] to-[hsl(25,95%,53%)] bg-clip-text text-transparent">Magic of Nepal</span>
           </h1>
           
-          <p className="max-w-2xl mx-auto text-xl md:text-2xl text-white/90 leading-relaxed animate-fade-in">
+          <p className="max-w-2xl mx-auto text-xl md:text-2xl text-white/95 leading-relaxed animate-fade-in drop-shadow-lg">
             Experience breathtaking Himalayan adventures, rich cultural heritage, and unforgettable journeys with Mahalaxmi Tours and Travel
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 animate-fade-in">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 hover-scale">
+            <Button size="lg" className="bg-gradient-to-r from-[hsl(213,89%,42%)] to-[hsl(271,81%,56%)] hover:from-[hsl(213,89%,38%)] hover:to-[hsl(271,81%,52%)] text-white px-8 py-3 hover-scale shadow-xl border-0">
               Explore Tour Packages
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button variant="outline" size="lg" className="px-8 py-3 bg-white/10 backdrop-blur border-white/30 text-white hover:bg-white/20">
+            <Button variant="outline" size="lg" className="px-8 py-3 bg-gradient-to-r from-[hsl(25,95%,53%)] to-[hsl(45,93%,47%)] text-white border-0 hover:from-[hsl(25,95%,48%)] hover:to-[hsl(45,93%,42%)] shadow-lg">
               Plan Custom Trip
             </Button>
           </div>
