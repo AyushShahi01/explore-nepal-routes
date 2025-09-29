@@ -31,16 +31,16 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Tour Packages", href: "#packages" },
-    { name: "About Us", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Tour Packages", href: "/#packages" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isVisible 
-        ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border translate-y-0' 
+        ? 'bg-background/20 backdrop-blur-sm border-b border-white/10 translate-y-0' 
         : 'bg-transparent border-transparent -translate-y-full'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

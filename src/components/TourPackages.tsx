@@ -2,6 +2,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Users, Star, MapPin, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
+import everestImage from "@/assets/everest-trek.jpg";
+import annapurnaImage from "@/assets/annapurna-trek.jpg";
+import kathmanduImage from "@/assets/kathmandu-cultural.jpg";
+import chitwanImage from "@/assets/chitwan-safari.jpg";
+import pokharaImage from "@/assets/nepal-pokhara.jpg";
+import langtangImage from "@/assets/langtang-trek.jpg";
 
 const TourPackages = () => {
   const packages = [
@@ -14,7 +21,7 @@ const TourPackages = () => {
       difficulty: "Challenging",
       rating: 4.9,
       price: "$2,500",
-      image: "🏔️",
+      image: everestImage,
       highlights: ["Everest Base Camp", "Sagarmatha National Park", "Sherpa Culture", "Kala Patthar"]
     },
     {
@@ -26,7 +33,7 @@ const TourPackages = () => {
       difficulty: "Moderate",
       rating: 4.8,
       price: "$1,800",
-      image: "🌄",
+      image: annapurnaImage,
       highlights: ["Thorong La Pass", "Muktinath Temple", "Diverse Landscapes", "Local Villages"]
     },
     {
@@ -38,7 +45,7 @@ const TourPackages = () => {
       difficulty: "Easy",
       rating: 4.7,
       price: "$450",
-      image: "🏛️",
+      image: kathmanduImage,
       highlights: ["Durbar Squares", "Swayambhunath", "Boudhanath", "Pashupatinath"]
     },
     {
@@ -50,7 +57,7 @@ const TourPackages = () => {
       difficulty: "Easy",
       rating: 4.6,
       price: "$650",
-      image: "🐅",
+      image: chitwanImage,
       highlights: ["Royal Bengal Tiger", "One-horned Rhino", "Elephant Safari", "Tharu Culture"]
     },
     {
@@ -62,7 +69,7 @@ const TourPackages = () => {
       difficulty: "Easy",
       rating: 4.8,
       price: "$750",
-      image: "🏞️",
+      image: pokharaImage,
       highlights: ["Phewa Lake", "Paragliding", "Sarangkot Sunrise", "World Peace Pagoda"]
     },
     {
@@ -74,7 +81,7 @@ const TourPackages = () => {
       difficulty: "Moderate",
       rating: 4.7,
       price: "$1,200",
-      image: "🏔️",
+      image: langtangImage,
       highlights: ["Langtang Lirung", "Kyanjin Gompa", "Tamang Culture", "Alpine Lakes"]
     }
   ];
@@ -107,13 +114,20 @@ const TourPackages = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {packages.map((pkg) => (
             <Card key={pkg.id} className="group hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="text-4xl">{pkg.image}</div>
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={pkg.image} 
+                  alt={pkg.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-4 right-4">
                   <Badge className={getDifficultyColor(pkg.difficulty)}>
                     {pkg.difficulty}
                   </Badge>
                 </div>
+              </div>
+              
+              <CardHeader className="pb-3">
                 <CardTitle className="text-xl group-hover:text-primary transition-colors">
                   {pkg.title}
                 </CardTitle>
@@ -162,12 +176,16 @@ const TourPackages = () => {
                 </div>
 
                 <div className="pt-4 space-y-2">
-                  <Button className="w-full bg-primary hover:bg-primary/90">
-                    Book Now
-                  </Button>
-                  <Button variant="outline" className="w-full">
-                    View Details
-                  </Button>
+                  <Link to={`/book-now?id=${pkg.id}`}>
+                    <Button className="w-full bg-primary hover:bg-primary/90">
+                      Book Now
+                    </Button>
+                  </Link>
+                  <Link to={`/tour-details?id=${pkg.id}`}>
+                    <Button variant="outline" className="w-full">
+                      View Details
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
