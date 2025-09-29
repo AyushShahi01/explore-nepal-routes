@@ -1,10 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import mahalaxmiLogo from "@/assets/mahalaxmi-logo.png";
+import mahalaxmiLogo from "@/assets/mahalaxmi-logo-2.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window !== 'undefined') { 
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+          // Scrolling down
+          setIsVisible(false);
+        } else if (window.scrollY < lastScrollY) {
+          // Scrolling up
+          setIsVisible(true);
+        }
+        setLastScrollY(window.scrollY);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -14,7 +38,11 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 border-b border-border">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      isVisible 
+        ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border translate-y-0' 
+        : 'bg-transparent border-transparent -translate-y-full'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
