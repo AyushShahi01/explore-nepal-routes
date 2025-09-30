@@ -9,47 +9,16 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { 
-  ArrowLeft, Calendar, Users, Shield, CreditCard, 
+  ArrowLeft, Users, Shield, CreditCard, 
   CheckCircle, Clock, MapPin, Star
 } from "lucide-react";
+import { getTourById, getDifficultyColor } from "@/data/tourPackages";
 
 const BookNow = () => {
   const [searchParams] = useSearchParams();
-  const tourId = searchParams.get('id') || '1';
+  const tourId = parseInt(searchParams.get('id') || '1');
 
-  const tourData: { [key: string]: any } = {
-    '1': {
-      title: "Everest Base Camp Trek",
-      duration: "14 Days",
-      difficulty: "Challenging",
-      rating: 4.9,
-      price: 2500,
-      image: "/src/assets/everest-trek.jpg"
-    },
-    '2': {
-      title: "Annapurna Circuit Trek", 
-      duration: "12 Days",
-      difficulty: "Moderate",
-      rating: 4.8,
-      price: 1800,
-      image: "/src/assets/annapurna-trek.jpg"
-    }
-  };
-
-  const tour = tourData[tourId] || tourData['1'];
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty.toLowerCase()) {
-      case 'easy':
-        return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
-      case 'moderate':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300';
-      case 'challenging':
-        return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300';
-      default:
-        return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300';
-    }
-  };
+  const tour = getTourById(tourId) || getTourById(1)!;
 
   return (
     <div className="min-h-screen">

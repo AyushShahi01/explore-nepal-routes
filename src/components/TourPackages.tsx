@@ -1,103 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Users, Star, MapPin, Clock } from "lucide-react";
+import { Users, Star, MapPin, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
-import everestImage from "@/assets/everest-trek.jpg";
-import annapurnaImage from "@/assets/annapurna-trek.jpg";
-import kathmanduImage from "@/assets/kathmandu-cultural.jpg";
-import chitwanImage from "@/assets/chitwan-safari.jpg";
-import pokharaImage from "@/assets/nepal-pokhara.jpg";
-import langtangImage from "@/assets/langtang-trek.jpg";
+import { tourPackages, getDifficultyColor } from "@/data/tourPackages";
 
 const TourPackages = () => {
-  const packages = [
-    {
-      id: 1,
-      title: "Everest Base Camp Trek",
-      description: "Experience the ultimate adventure to the base of world's highest peak",
-      duration: "14 Days",
-      groupSize: "2-12 People",
-      difficulty: "Challenging",
-      rating: 4.9,
-      price: "$2,500",
-      image: everestImage,
-      highlights: ["Everest Base Camp", "Sagarmatha National Park", "Sherpa Culture", "Kala Patthar"]
-    },
-    {
-      id: 2,
-      title: "Annapurna Circuit Trek",
-      description: "Classic trek through diverse landscapes and traditional villages",
-      duration: "12 Days",
-      groupSize: "2-15 People",
-      difficulty: "Moderate",
-      rating: 4.8,
-      price: "$1,800",
-      image: annapurnaImage,
-      highlights: ["Thorong La Pass", "Muktinath Temple", "Diverse Landscapes", "Local Villages"]
-    },
-    {
-      id: 3,
-      title: "Kathmandu Valley Cultural Tour",
-      description: "Explore UNESCO World Heritage sites and ancient temples",
-      duration: "3 Days",
-      groupSize: "1-20 People",
-      difficulty: "Easy",
-      rating: 4.7,
-      price: "$450",
-      image: kathmanduImage,
-      highlights: ["Durbar Squares", "Swayambhunath", "Boudhanath", "Pashupatinath"]
-    },
-    {
-      id: 4,
-      title: "Chitwan National Park Safari",
-      description: "Wildlife adventure in Nepal's premier national park",
-      duration: "4 Days",
-      groupSize: "2-10 People",
-      difficulty: "Easy",
-      rating: 4.6,
-      price: "$650",
-      image: chitwanImage,
-      highlights: ["Royal Bengal Tiger", "One-horned Rhino", "Elephant Safari", "Tharu Culture"]
-    },
-    {
-      id: 5,
-      title: "Pokhara Lakeside & Adventure",
-      description: "Scenic beauty, adventure sports, and relaxation combined",
-      duration: "5 Days",
-      groupSize: "1-15 People",
-      difficulty: "Easy",
-      rating: 4.8,
-      price: "$750",
-      image: pokharaImage,
-      highlights: ["Phewa Lake", "Paragliding", "Sarangkot Sunrise", "World Peace Pagoda"]
-    },
-    {
-      id: 6,
-      title: "Langtang Valley Trek",
-      description: "Beautiful valley trek close to Kathmandu with stunning views",
-      duration: "8 Days",
-      groupSize: "2-12 People",
-      difficulty: "Moderate",
-      rating: 4.7,
-      price: "$1,200",
-      image: langtangImage,
-      highlights: ["Langtang Lirung", "Kyanjin Gompa", "Tamang Culture", "Alpine Lakes"]
-    }
-  ];
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty.toLowerCase()) {
-      case 'easy':
-        return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
-      case 'moderate':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300';
-      case 'challenging':
-        return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300';
-      default:
-        return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300';
-    }
-  };
 
   return (
     <section id="packages" className="py-20 bg-background">
@@ -111,8 +19,8 @@ const TourPackages = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {packages.map((pkg) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {tourPackages.map((pkg) => (
             <Card key={pkg.id} className="group hover:shadow-lg transition-shadow duration-300 overflow-hidden">
               <div className="relative h-48 overflow-hidden">
                 <img 
@@ -153,8 +61,8 @@ const TourPackages = () => {
                     <Star className="h-4 w-4 text-yellow-500 mr-1 fill-current" />
                     <span className="font-medium">{pkg.rating}</span>
                   </div>
-                  <div className="text-2xl font-bold text-primary">
-                    {pkg.price}
+                  <div className="text-xl md:text-2xl font-bold text-primary">
+                    ${pkg.price}
                   </div>
                 </div>
 

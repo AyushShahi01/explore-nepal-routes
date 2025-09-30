@@ -8,106 +8,13 @@ import {
   Calendar, Users, Star, MapPin, Clock, CheckCircle, 
   Mountain, Camera, Utensils, Bed, ArrowLeft, Heart
 } from "lucide-react";
+import { getTourById, getDifficultyColor } from "@/data/tourPackages";
 
 const TourDetails = () => {
   const [searchParams] = useSearchParams();
-  const tourId = searchParams.get('id') || '1';
+  const tourId = parseInt(searchParams.get('id') || '1');
 
-  const tourData: { [key: string]: any } = {
-    '1': {
-      title: "Everest Base Camp Trek",
-      description: "Experience the ultimate adventure to the base of world's highest peak. This legendary trek takes you through the heart of the Khumbu region, offering spectacular mountain views, rich Sherpa culture, and the achievement of reaching Everest Base Camp at 5,364m.",
-      duration: "14 Days",
-      groupSize: "2-12 People",
-      difficulty: "Challenging",
-      rating: 4.9,
-      price: "$2,500",
-      image: "/src/assets/everest-trek.jpg",
-      highlights: ["Everest Base Camp (5,364m)", "Sagarmatha National Park", "Sherpa Culture", "Kala Patthar (5,545m)", "Tengboche Monastery", "Namche Bazaar"],
-      itinerary: [
-        "Day 1: Fly to Lukla (2,840m), trek to Phakding (2,610m)",
-        "Day 2: Trek to Namche Bazaar (3,440m)",
-        "Day 3: Acclimatization day in Namche",
-        "Day 4: Trek to Tengboche (3,860m)",
-        "Day 5: Trek to Dingboche (4,410m)",
-        "Day 6: Acclimatization day in Dingboche",
-        "Day 7: Trek to Lobuche (4,910m)",
-        "Day 8: Trek to Everest Base Camp (5,364m) via Gorak Shep",
-        "Day 9: Climb Kala Patthar (5,545m), return to Pheriche",
-        "Day 10-14: Return journey to Lukla"
-      ],
-      included: [
-        "Domestic flights (Kathmandu-Lukla-Kathmandu)",
-        "Accommodation in tea houses/lodges",
-        "All meals during the trek",
-        "Experienced English-speaking guide",
-        "Porter service (1 porter for 2 trekkers)",
-        "All permits and entrance fees",
-        "First aid kit and emergency assistance"
-      ],
-      excluded: [
-        "International flights",
-        "Nepal entry visa fees",
-        "Travel insurance",
-        "Personal expenses and tips",
-        "Alcoholic beverages and bottled water",
-        "Emergency evacuation costs"
-      ]
-    },
-    '2': {
-      title: "Annapurna Circuit Trek",
-      description: "Classic trek through diverse landscapes and traditional villages. Experience the dramatic changes in scenery from lush green valleys to high alpine desert, cross the challenging Thorong La Pass, and immerse yourself in local culture.",
-      duration: "12 Days",
-      groupSize: "2-15 People", 
-      difficulty: "Moderate",
-      rating: 4.8,
-      price: "$1,800",
-      image: "/src/assets/annapurna-trek.jpg",
-      highlights: ["Thorong La Pass (5,416m)", "Muktinath Temple", "Diverse Landscapes", "Local Villages", "Annapurna Range Views", "Manang Valley"],
-      itinerary: [
-        "Day 1: Drive to Besisahar, trek to Bhulbhule",
-        "Day 2: Trek to Chame (2,710m)",
-        "Day 3: Trek to Pisang (3,300m)",
-        "Day 4: Trek to Manang (3,519m)",
-        "Day 5: Acclimatization day in Manang",
-        "Day 6: Trek to Yak Kharka (4,110m)",
-        "Day 7: Trek to Thorong Phedi (4,450m)",
-        "Day 8: Cross Thorong La Pass, descent to Muktinath",
-        "Day 9: Trek to Marpha (2,670m)",
-        "Day 10-12: Return journey via Pokhara"
-      ],
-      included: [
-        "Airport transfers",
-        "Accommodation in tea houses",
-        "All meals during trek",
-        "Professional guide and porter",
-        "All permits and fees",
-        "Transportation as per itinerary"
-      ],
-      excluded: [
-        "International flights",
-        "Travel insurance",
-        "Personal expenses",
-        "Emergency evacuation",
-        "Tips for guide and porter"
-      ]
-    }
-  };
-
-  const tour = tourData[tourId] || tourData['1'];
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty.toLowerCase()) {
-      case 'easy':
-        return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
-      case 'moderate':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300';
-      case 'challenging':
-        return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300';
-      default:
-        return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300';
-    }
-  };
+  const tour = getTourById(tourId) || getTourById(1)!;
 
   return (
     <div className="min-h-screen">
@@ -158,18 +65,18 @@ const TourDetails = () => {
                 </div>
               </div>
               
-              <div className="flex items-center justify-between">
-                <div className="text-4xl font-bold text-primary">
-                  {tour.price}
-                  <span className="text-lg font-normal text-muted-foreground ml-2">per person</span>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="text-3xl md:text-4xl font-bold text-primary">
+                  ${tour.price}
+                  <span className="text-base md:text-lg font-normal text-muted-foreground ml-2">per person</span>
                 </div>
-                <div className="flex gap-3">
-                  <Button variant="outline" size="lg">
+                <div className="flex gap-2 sm:gap-3">
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto">
                     <Heart className="h-4 w-4 mr-2" />
-                    Save
+                    <span className="hidden sm:inline">Save</span>
                   </Button>
-                  <Link to={`/book-now?id=${tourId}`}>
-                    <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  <Link to={`/book-now?id=${tourId}`} className="w-full sm:w-auto">
+                    <Button size="lg" className="bg-primary hover:bg-primary/90 w-full">
                       Book Now
                     </Button>
                   </Link>
@@ -179,9 +86,11 @@ const TourDetails = () => {
             
             <div className="relative">
               <div className="aspect-[4/3] bg-muted rounded-xl overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                  <Camera className="h-16 w-16 text-primary/60" />
-                </div>
+                <img 
+                  src={tour.image} 
+                  alt={tour.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -289,7 +198,7 @@ const TourDetails = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">{tour.price}</div>
+                    <div className="text-3xl font-bold text-primary">${tour.price}</div>
                     <div className="text-sm text-muted-foreground">per person</div>
                   </div>
                   
