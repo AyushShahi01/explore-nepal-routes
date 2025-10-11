@@ -11,8 +11,6 @@ export interface TourPackage {
   description: string;
   duration: string;
   groupSize: string;
-  difficulty: string;
-  rating: number;
   price: number;
   image: string;
   highlights: string[];
@@ -28,8 +26,6 @@ export const tourPackages: TourPackage[] = [
     description: "Experience the ultimate adventure to the base of world's highest peak. This legendary trek takes you through the heart of the Khumbu region, offering spectacular mountain views, rich Sherpa culture, and the achievement of reaching Everest Base Camp at 5,364m.",
     duration: "14 Days",
     groupSize: "2-12 People",
-    difficulty: "Challenging",
-    rating: 4.9,
     price: 2500,
     image: everestImage,
     highlights: ["Everest Base Camp (5,364m)", "Sagarmatha National Park", "Sherpa Culture", "Kala Patthar (5,545m)", "Tengboche Monastery", "Namche Bazaar"],
@@ -69,8 +65,6 @@ export const tourPackages: TourPackage[] = [
     description: "Classic trek through diverse landscapes and traditional villages. Experience the dramatic changes in scenery from lush green valleys to high alpine desert, cross the challenging Thorong La Pass, and immerse yourself in local culture.",
     duration: "12 Days",
     groupSize: "2-15 People",
-    difficulty: "Moderate",
-    rating: 4.8,
     price: 1800,
     image: annapurnaImage,
     highlights: ["Thorong La Pass (5,416m)", "Muktinath Temple", "Diverse Landscapes", "Local Villages", "Annapurna Range Views", "Manang Valley"],
@@ -108,8 +102,6 @@ export const tourPackages: TourPackage[] = [
     description: "Explore UNESCO World Heritage sites and ancient temples",
     duration: "3 Days",
     groupSize: "1-20 People",
-    difficulty: "Easy",
-    rating: 4.7,
     price: 450,
     image: kathmanduImage,
     highlights: ["Durbar Squares", "Swayambhunath", "Boudhanath", "Pashupatinath"],
@@ -136,8 +128,6 @@ export const tourPackages: TourPackage[] = [
     description: "Wildlife adventure in Nepal's premier national park",
     duration: "4 Days",
     groupSize: "2-10 People",
-    difficulty: "Easy",
-    rating: 4.6,
     price: 650,
     image: chitwanImage,
     highlights: ["Royal Bengal Tiger", "One-horned Rhino", "Elephant Safari", "Tharu Culture"],
@@ -165,8 +155,6 @@ export const tourPackages: TourPackage[] = [
     description: "Scenic beauty, adventure sports, and relaxation combined",
     duration: "5 Days",
     groupSize: "1-15 People",
-    difficulty: "Easy",
-    rating: 4.8,
     price: 750,
     image: pokharaImage,
     highlights: ["Phewa Lake", "Paragliding", "Sarangkot Sunrise", "World Peace Pagoda"],
@@ -195,8 +183,6 @@ export const tourPackages: TourPackage[] = [
     description: "Beautiful valley trek close to Kathmandu with stunning views",
     duration: "8 Days",
     groupSize: "2-12 People",
-    difficulty: "Moderate",
-    rating: 4.7,
     price: 1200,
     image: langtangImage,
     highlights: ["Langtang Lirung", "Kyanjin Gompa", "Tamang Culture", "Alpine Lakes"],
@@ -226,17 +212,4 @@ export const tourPackages: TourPackage[] = [
 
 export const getTourById = (id: number): TourPackage | undefined => {
   return tourPackages.find(tour => tour.id === id);
-};
-
-export const getDifficultyColor = (difficulty: string): string => {
-  switch (difficulty.toLowerCase()) {
-    case 'easy':
-      return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
-    case 'moderate':
-      return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300';
-    case 'challenging':
-      return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300';
-    default:
-      return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300';
-  }
 };

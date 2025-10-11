@@ -1,9 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Users, Star, MapPin, Clock } from "lucide-react";
+import { Users, MapPin, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
-import { tourPackages, getDifficultyColor } from "@/data/tourPackages";
+import { tourPackages } from "@/data/tourPackages";
 
 const TourPackages = () => {
 
@@ -28,11 +28,6 @@ const TourPackages = () => {
                   alt={pkg.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute top-4 right-4">
-                  <Badge className={getDifficultyColor(pkg.difficulty)}>
-                    {pkg.difficulty}
-                  </Badge>
-                </div>
               </div>
               
               <CardHeader className="pb-3">
@@ -56,14 +51,9 @@ const TourPackages = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center text-sm">
-                    <Star className="h-4 w-4 text-yellow-500 mr-1 fill-current" />
-                    <span className="font-medium">{pkg.rating}</span>
-                  </div>
-                  <div className="text-xl md:text-2xl font-bold text-primary">
-                    ${pkg.price}
-                  </div>
+                <div className="text-xl md:text-2xl font-bold text-primary text-right">
+                  ${pkg.price}
+                  <span className="text-sm font-normal text-muted-foreground ml-1">per person</span>
                 </div>
 
                 <div className="space-y-2">

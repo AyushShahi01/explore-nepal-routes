@@ -5,10 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Calendar, Users, Star, MapPin, Clock, CheckCircle, 
-  Mountain, Camera, Utensils, Bed, ArrowLeft, Heart
+  Calendar, Users, MapPin, Clock, CheckCircle, 
+  Utensils, Bed, ArrowLeft, Heart
 } from "lucide-react";
-import { getTourById, getDifficultyColor } from "@/data/tourPackages";
+import { getTourById } from "@/data/tourPackages";
 
 const TourDetails = () => {
   const [searchParams] = useSearchParams();
@@ -31,17 +31,6 @@ const TourDetails = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="flex items-center gap-4 mb-4">
-                <Badge className={getDifficultyColor(tour.difficulty)}>
-                  {tour.difficulty}
-                </Badge>
-                <div className="flex items-center">
-                  <Star className="h-4 w-4 text-yellow-500 mr-1 fill-current" />
-                  <span className="font-medium">{tour.rating}</span>
-                  <span className="text-muted-foreground ml-1">(127 reviews)</span>
-                </div>
-              </div>
-              
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
                 {tour.title}
               </h1>
@@ -58,10 +47,6 @@ const TourDetails = () => {
                 <div className="flex items-center">
                   <Users className="h-4 w-4 mr-2" />
                   {tour.groupSize}
-                </div>
-                <div className="flex items-center">
-                  <Mountain className="h-4 w-4 mr-2" />
-                  {tour.difficulty} Level
                 </div>
               </div>
               
@@ -211,12 +196,6 @@ const TourDetails = () => {
                       <span>Group Size:</span>
                       <span className="font-medium">{tour.groupSize}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span>Difficulty:</span>
-                      <Badge className={getDifficultyColor(tour.difficulty)} variant="outline">
-                        {tour.difficulty}
-                      </Badge>
-                    </div>
                   </div>
                   
                   <div className="space-y-3 pt-4">
@@ -248,7 +227,7 @@ const TourDetails = () => {
                     <span>All meals included</span>
                   </div>
                   <div className="flex items-center text-sm">
-                    <Mountain className="h-4 w-4 mr-3 text-primary" />
+                    <MapPin className="h-4 w-4 mr-3 text-primary" />
                     <span>Experienced guide</span>
                   </div>
                   <div className="flex items-center text-sm">

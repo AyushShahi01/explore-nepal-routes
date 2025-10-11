@@ -9,10 +9,10 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { 
-  ArrowLeft, Users, Shield, CreditCard, 
-  CheckCircle, Clock, MapPin, Star
+  ArrowLeft, Shield, CreditCard, 
+  CheckCircle, Clock, MapPin
 } from "lucide-react";
-import { getTourById, getDifficultyColor } from "@/data/tourPackages";
+import { getTourById } from "@/data/tourPackages";
 
 const BookNow = () => {
   const [searchParams] = useSearchParams();
@@ -61,45 +61,34 @@ const BookNow = () => {
                   <form className="space-y-8">
                     
                     {/* Personal Information */}
-                    <div className="space-y-6">
+                    <div className="space-y-4">
                       <h3 className="text-lg font-semibold border-b pb-2">Personal Information</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="firstName">First Name *</Label>
-                          <Input id="firstName" placeholder="Enter your first name" required />
+                          <Label htmlFor="fullName">Full Name *</Label>
+                          <Input id="fullName" placeholder="Enter your full name" required />
                         </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="lastName">Last Name *</Label>
-                          <Input id="lastName" placeholder="Enter your last name" required />
-                        </div>
-                      </div>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="email">Email Address *</Label>
-                          <Input id="email" type="email" placeholder="Enter your email" required />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="phone">Phone Number *</Label>
-                          <Input id="phone" placeholder="Enter your phone number" required />
+                          <Input id="email" type="email" placeholder="your.email@example.com" required />
                         </div>
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="nationality">Nationality *</Label>
-                          <Input id="nationality" placeholder="e.g., American, British" required />
+                          <Label htmlFor="phone">Phone Number *</Label>
+                          <Input id="phone" placeholder="+1 234 567 8900" required />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="age">Age *</Label>
-                          <Input id="age" type="number" placeholder="Enter your age" required />
+                          <Label htmlFor="nationality">Nationality *</Label>
+                          <Input id="nationality" placeholder="e.g., American" required />
                         </div>
                       </div>
                     </div>
 
                     {/* Travel Details */}
-                    <div className="space-y-6">
+                    <div className="space-y-4">
                       <h3 className="text-lg font-semibold border-b pb-2">Travel Details</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -111,7 +100,7 @@ const BookNow = () => {
                           <Label htmlFor="groupSize">Number of Travelers *</Label>
                           <Select>
                             <SelectTrigger>
-                              <SelectValue placeholder="Select group size" />
+                              <SelectValue placeholder="Select number" />
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="1">1 Person</SelectItem>
@@ -125,87 +114,39 @@ const BookNow = () => {
                       </div>
                       
                       <div className="space-y-2">
-                        <Label htmlFor="fitness">Fitness Level</Label>
-                        <Select>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select your fitness level" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="beginner">Beginner</SelectItem>
-                            <SelectItem value="moderate">Moderate</SelectItem>
-                            <SelectItem value="experienced">Experienced</SelectItem>
-                            <SelectItem value="expert">Expert</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="dietary">Dietary Requirements</Label>
-                        <Input id="dietary" placeholder="e.g., Vegetarian, Vegan, Allergies" />
-                      </div>
-                    </div>
-
-                    {/* Additional Information */}
-                    <div className="space-y-6">
-                      <h3 className="text-lg font-semibold border-b pb-2">Additional Information</h3>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="experience">Previous Trekking Experience</Label>
-                        <Textarea 
-                          id="experience" 
-                          placeholder="Tell us about your previous trekking or hiking experience..."
-                          rows={3}
-                        />
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="medical">Medical Conditions</Label>
-                        <Textarea 
-                          id="medical" 
-                          placeholder="Please mention any medical conditions, medications, or health concerns..."
-                          rows={3}
-                        />
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="special">Special Requests</Label>
+                        <Label htmlFor="special">Special Requests or Requirements</Label>
                         <Textarea 
                           id="special" 
-                          placeholder="Any special requests, celebrations, or customizations..."
-                          rows={3}
+                          placeholder="Dietary requirements, medical conditions, or any special requests..."
+                          rows={4}
                         />
                       </div>
                     </div>
 
                     {/* Emergency Contact */}
-                    <div className="space-y-6">
+                    <div className="space-y-4">
                       <h3 className="text-lg font-semibold border-b pb-2">Emergency Contact</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="emergencyName">Contact Name *</Label>
-                          <Input id="emergencyName" placeholder="Emergency contact name" required />
+                          <Input id="emergencyName" placeholder="Full name" required />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="emergencyPhone">Contact Phone *</Label>
-                          <Input id="emergencyPhone" placeholder="Emergency contact phone" required />
+                          <Input id="emergencyPhone" placeholder="+1 234 567 8900" required />
                         </div>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="relationship">Relationship</Label>
-                        <Input id="relationship" placeholder="e.g., Spouse, Parent, Friend" />
                       </div>
                     </div>
 
                     {/* Submit Button */}
-                    <div className="pt-6">
+                    <div className="pt-4">
                       <Button className="w-full" size="lg">
-                        <CreditCard className="h-4 w-4 mr-2" />
-                        Proceed to Payment
+                        <CreditCard className="h-5 w-5 mr-2" />
+                        Continue to Payment
                       </Button>
-                      <p className="text-sm text-muted-foreground text-center mt-2">
-                        You will be redirected to secure payment gateway
+                      <p className="text-xs text-muted-foreground text-center mt-3">
+                        🔒 Secure payment • Free cancellation up to 30 days before departure
                       </p>
                     </div>
                   </form>
@@ -225,17 +166,7 @@ const BookNow = () => {
                   
                   {/* Tour Info */}
                   <div className="space-y-3">
-                    <h4 className="font-semibold">{tour.title}</h4>
-                    
-                    <div className="flex items-center gap-2">
-                      <Badge className={getDifficultyColor(tour.difficulty)} variant="outline">
-                        {tour.difficulty}
-                      </Badge>
-                      <div className="flex items-center text-sm">
-                        <Star className="h-3 w-3 text-yellow-500 mr-1 fill-current" />
-                        {tour.rating}
-                      </div>
-                    </div>
+                    <h4 className="font-semibold text-lg">{tour.title}</h4>
                     
                     <div className="space-y-2 text-sm text-muted-foreground">
                       <div className="flex items-center">
