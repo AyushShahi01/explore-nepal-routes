@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mountain, MapPin } from "lucide-react";
 import everestImage from "@/assets/nepal-everest.jpg";
@@ -59,13 +60,22 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 animate-fade-in">
-            <Button size="lg" className="bg-gradient-to-r from-[hsl(213,89%,42%)] to-[hsl(271,81%,56%)] hover:from-[hsl(213,89%,38%)] hover:to-[hsl(271,81%,52%)] text-white px-8 py-3 hover-scale shadow-xl border-0">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-[hsl(213,89%,42%)] to-[hsl(271,81%,56%)] hover:from-[hsl(213,89%,38%)] hover:to-[hsl(271,81%,52%)] text-white px-8 py-3 hover-scale shadow-xl border-0"
+              onClick={() => {
+                const packagesSection = document.getElementById('packages');
+                packagesSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+            >
               Explore Tour Packages
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button variant="outline" size="lg" className="px-8 py-3 bg-gradient-to-r from-[hsl(25,95%,53%)] to-[hsl(45,93%,47%)] text-white border-0 hover:from-[hsl(25,95%,48%)] hover:to-[hsl(45,93%,42%)] shadow-lg">
-              Plan Custom Trip
-            </Button>
+            <Link to="/contact">
+              <Button variant="outline" size="lg" className="px-8 py-3 bg-gradient-to-r from-[hsl(25,95%,53%)] to-[hsl(45,93%,47%)] text-white border-0 hover:from-[hsl(25,95%,48%)] hover:to-[hsl(45,93%,42%)] shadow-lg">
+                Plan Custom Trip
+              </Button>
+            </Link>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 text-center">
