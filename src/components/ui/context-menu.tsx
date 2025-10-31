@@ -1,3 +1,4 @@
+// creates a set of reusable Context Menu components using Radix UI and Lucide icons
 import * as React from "react";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";

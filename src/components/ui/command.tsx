@@ -1,3 +1,4 @@
+// creates a set of reusable Command components using Radix UI and cmdk
 import * as React from "react";
 import { type DialogProps } from "@radix-ui/react-dialog";
 import { Command as CommandPrimitive } from "cmdk";

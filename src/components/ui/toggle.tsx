@@ -1,3 +1,4 @@
+// creates a reusable Toggle component using Radix UI with variant styling
 import * as React from "react";
 import * as TogglePrimitive from "@radix-ui/react-toggle";
 import { cva, type VariantProps } from "class-variance-authority";

@@ -1,3 +1,4 @@
+// creates a set of reusable Menubar components using Radix UI and Lucide icons
 import * as React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { Check, ChevronRight, Circle } from "lucide-react";

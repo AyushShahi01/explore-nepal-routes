@@ -1,3 +1,4 @@
+//  creates a Toaster component using Sonner and integrates it with next-themes for theme support
 import { useTheme } from "next-themes";
 import { Toaster as Sonner, toast } from "sonner";
 

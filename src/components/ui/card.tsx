@@ -1,3 +1,4 @@
+// creates a set of reusable Card components with customizable headers, footers, titles, descriptions, and content areas
 import * as React from "react";
 
 import { cn } from "@/lib/utils";

@@ -1,3 +1,4 @@
+// creates a customizable checkbox component using Radix UI and Lucide icons
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { Check } from "lucide-react";

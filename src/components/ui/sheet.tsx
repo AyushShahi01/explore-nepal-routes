@@ -1,3 +1,4 @@
+// creates a set of reusable Sheet components using Radix UI and Lucide icons
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { cva, type VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";

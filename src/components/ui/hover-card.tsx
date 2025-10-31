@@ -1,3 +1,4 @@
+// creates a set of reusable Hover Card components using Radix UI
 import * as React from "react";
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
 

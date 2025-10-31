@@ -1,3 +1,4 @@
+// creates a reusable Progress Bar component with consistent styling
 import * as React from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 

@@ -1,3 +1,4 @@
+// creates a reusable Skeleton component for loading states
 import { cn } from "@/lib/utils";
 
 function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {

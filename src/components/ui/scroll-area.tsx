@@ -1,3 +1,4 @@
+// creates a set of reusable Scroll Area components using Radix UI
 import * as React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 

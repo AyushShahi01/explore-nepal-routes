@@ -1,3 +1,4 @@
+// creates a set of reusable OTP Input components using input-otp and Lucide icons
 import * as React from "react";
 import { OTPInput, OTPInputContext } from "input-otp";
 import { Dot } from "lucide-react";

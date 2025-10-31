@@ -1,3 +1,4 @@
+// creates a Toaster component that displays toast notifications using a custom hook and UI components
 import { useToast } from "@/hooks/use-toast";
 import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from "@/components/ui/toast";
 

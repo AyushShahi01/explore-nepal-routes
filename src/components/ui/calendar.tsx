@@ -1,3 +1,4 @@
+// creates a customizable calendar component using react-day-picker
 import * as React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { DayPicker } from "react-day-picker";

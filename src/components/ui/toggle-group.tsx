@@ -1,3 +1,4 @@
+// creates a set of reusable ToggleGroup components using Radix UI with variant styling
 import * as React from "react";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 import { type VariantProps } from "class-variance-authority";

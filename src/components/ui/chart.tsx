@@ -1,3 +1,4 @@
+// creates a set of reusable Chart components using Recharts with customizable tooltips and legends
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
 

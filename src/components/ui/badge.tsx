@@ -1,3 +1,4 @@
+// creates a customizable badge component with different variants
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 

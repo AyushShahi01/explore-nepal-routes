@@ -1,3 +1,4 @@
+// creates a set of reusable Tabs components using Radix UI
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 

@@ -1,3 +1,4 @@
+// creates a set of reusable Slider components using Radix UI
 import * as React from "react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 

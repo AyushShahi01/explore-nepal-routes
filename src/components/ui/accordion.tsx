@@ -1,3 +1,5 @@
+// creates a set of reusable Accordion components using Radix UI with custom styling and animations
+// exporting the Accordion, AccordionItem, AccordionTrigger, and AccordionContent components so they can be used elsewhere
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
@@ -14,6 +16,8 @@ const AccordionItem = React.forwardRef<
 ));
 AccordionItem.displayName = "AccordionItem";
 
+
+// Radix’s Trigger component is wrapped inside a Header component to ensure proper semantics and accessibility for accordion items.
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
@@ -34,6 +38,7 @@ const AccordionTrigger = React.forwardRef<
 ));
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 
+// Handles the expand/collapse animations for the accordion content.
 const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>

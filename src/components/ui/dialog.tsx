@@ -1,3 +1,4 @@
+// creates a set of reusable Dialog components using Radix UI and Lucide icons
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
