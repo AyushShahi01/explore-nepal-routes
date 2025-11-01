@@ -52,7 +52,7 @@ const TourPackages = () => {
                 </div>
 
                 <div className="text-xl md:text-2xl font-bold text-primary text-right">
-                  ${pkg.price}
+                  Rs{pkg.price}
                   <span className="text-sm font-normal text-muted-foreground ml-1">per person</span>
                 </div>
 

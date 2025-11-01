@@ -52,7 +52,7 @@ const TourDetails = () => {
               
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div className="text-3xl md:text-4xl font-bold text-primary">
-                  ${tour.price}
+                  Rs{tour.price}
                   <span className="text-base md:text-lg font-normal text-muted-foreground ml-2">per person</span>
                 </div>
                 <div className="flex gap-2 sm:gap-3">
@@ -183,7 +183,7 @@ const TourDetails = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">${tour.price}</div>
+                    <div className="text-3xl font-bold text-primary">Rs{tour.price}</div>
                     <div className="text-sm text-muted-foreground">per person</div>
                   </div>
                   

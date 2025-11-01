@@ -72,11 +72,12 @@ const Navbar = () => {
 
           {/* Contact Info */}
           <div className="hidden lg:flex items-center space-x-4">
-            <div className="flex items-center text-sm text-muted-foreground">
+            <div className="flex items-center text-sm text-black">
+              {/* Removed text-muted-foreground */}
               <Phone className="h-4 w-4 mr-1" />
               +977-1-4123456
             </div>
-            <div className="flex items-center text-sm text-muted-foreground">
+            <div className="flex items-center text-sm text-black">
               <Mail className="h-4 w-4 mr-1" />
               info@mahalaxmi.com
             </div>
@@ -108,16 +109,19 @@ const Navbar = () => {
                   {item.name}
                 </a>
               ))}
-              <div className="pt-2 border-t">
-                <div className="px-3 py-2 text-sm text-muted-foreground">
-                  <Phone className="h-4 w-4 inline mr-2" />
-                  +977-1-4123456
+                <div className="flex items-center text-sm text-black">
+                  <div className="pt-2 border-t">
+                    <div className="px-3 py-2 text-sm text-black flex items-center">
+                      <Phone className="h-4 w-4 inline mr-2 " />
+                      +977-1-4123456
+                    </div>
+                    <div className="px-3 py-2 text-sm text-black flex items-center">
+                      <Mail className="h-4 w-4 inline mr-2" />
+                      info@mahalaxmi.com
+                    </div>
+                  </div>
                 </div>
-                <div className="px-3 py-2 text-sm text-muted-foreground">
-                  <Mail className="h-4 w-4 inline mr-2" />
-                  info@mahalaxmi.com
-                </div>
-              </div>
+
             </div>
           </div>
         )}
