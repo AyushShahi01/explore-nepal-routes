@@ -1,4 +1,5 @@
 import { useSearchParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,15 +7,61 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
   Calendar, Users, MapPin, Clock, CheckCircle, 
-  Utensils, Bed, ArrowLeft, Heart
+  Utensils, Bed, ArrowLeft, Heart, Loader2
 } from "lucide-react";
-import { getTourById } from "@/data/tourPackages";
+import { getTourById, type TourPackage } from "@/data/tourPackages";
 
 const TourDetails = () => {
   const [searchParams] = useSearchParams();
   const tourId = parseInt(searchParams.get('id') || '1');
+  const [tour, setTour] = useState<TourPackage | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const tour = getTourById(tourId) || getTourById(1)!;
+  useEffect(() => {
+    const loadTour = async () => {
+      try {
+        setLoading(true);
+        const tourData = await getTourById(tourId);
+        setTour(tourData || null);
+      } catch (error) {
+        console.error("Failed to load tour:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadTour();
+  }, [tourId]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen">
+        <Navbar />
+        <div className="flex justify-center items-center py-40">
+          <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (!tour) {
+    return (
+      <div className="min-h-screen">
+        <Navbar />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center">
+            <h1 className="text-3xl font-bold mb-4">Tour Not Found</h1>
+            <p className="text-muted-foreground mb-6">The tour you're looking for doesn't exist.</p>
+            <Link to="/">
+              <Button>Back to Home</Button>
+            </Link>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">

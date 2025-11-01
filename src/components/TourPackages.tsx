@@ -1,11 +1,33 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Users, MapPin, Clock } from "lucide-react";
+import { Users, MapPin, Clock, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { tourPackages } from "@/data/tourPackages";
+import { getTourPackages, type TourPackage } from "@/data/tourPackages";
+import { useEffect, useState } from "react";
 
 const TourPackages = () => {
+  const [tourPackages, setTourPackages] = useState<TourPackage[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadTourPackages = async () => {
+      try {
+        setLoading(true);
+        const packages = await getTourPackages();
+        setTourPackages(packages);
+        setError(null);
+      } catch (err) {
+        console.error("Failed to load tour packages:", err);
+        setError("Failed to load tour packages. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadTourPackages();
+  }, []);
 
   return (
     <section id="packages" className="py-20 bg-background">
@@ -19,8 +41,27 @@ const TourPackages = () => {
           </p>
         </div>
 
+        {loading && (
+          <div className="flex justify-center items-center py-20">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+          </div>
+        )}
+
+        {error && (
+          <div className="text-center py-10">
+            <p className="text-red-500 mb-4">{error}</p>
+            <Button onClick={() => window.location.reload()}>Retry</Button>
+          </div>
+        )}
+
+        {!loading && !error && tourPackages.length === 0 && (
+          <div className="text-center py-10">
+            <p className="text-muted-foreground">No tour packages available at the moment.</p>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {tourPackages.map((pkg) => (
+          {!loading && !error && tourPackages.map((pkg) => (
             <Card key={pkg.id} className="group hover:shadow-lg transition-shadow duration-300 overflow-hidden">
               <div className="relative h-48 overflow-hidden">
                 <img 

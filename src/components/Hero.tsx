@@ -80,15 +80,15 @@ const Hero = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 text-center">
             <div className="p-6 rounded-lg bg-white/10 backdrop-blur border border-white/20 hover-scale">
-              <div className="text-2xl font-bold text-white">500+</div>
+              <div className="text-2xl font-bold text-white">900+</div>
               <div className="text-sm text-white/80">Happy Travelers</div>
             </div>
             <div className="p-6 rounded-lg bg-white/10 backdrop-blur border border-white/20 hover-scale">
-              <div className="text-2xl font-bold text-white">50+</div>
+              <div className="text-2xl font-bold text-white">30+</div>
               <div className="text-sm text-white/80">Tour Destinations</div>
             </div>
             <div className="p-6 rounded-lg bg-white/10 backdrop-blur border border-white/20 hover-scale">
-              <div className="text-2xl font-bold text-white">15+</div>
+              <div className="text-2xl font-bold text-white">10+</div>
               <div className="text-sm text-white/80">Years Experience</div>
             </div>
           </div>
